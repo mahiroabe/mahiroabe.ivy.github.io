@@ -1,0 +1,249 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #212121;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    top: 0; /* ヘッダーを上部に固定 */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: background 0.3s;
+}
+
+nav ul li a:hover {
+    background: #333;
+}
+
+section {
+    padding: 50px 20px;
+    text-align: center;
+    position: relative;
+    padding-top: 130px; /* 上部に余白を追加して見出しが隠れないように */
+}
+
+.hero {
+    background-image: url('hero-background.jpg'); /* 背景画像を設定 */
+    background-size: contain; /* コンテナ内に画像を収める */
+    background-position: center;
+    background-repeat: no-repeat; /* 繰り返し表示しない */
+    background-attachment: fixed; /* スクロールしても背景画像が固定される */
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    height: calc(100vh - 80px); /* ヘッダーの高さ分を差し引いて表示 */
+    margin-top: 80px; /* ヘッダーの高さ分のマージンを追加 */
+}
+
+.hero:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 背景のオーバーレイ */
+    animation: fadeIn 2s forwards; /* フェードインアニメーション */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.5;
+    }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* ボタン間の間隔 */
+}
+
+.btn {
+    display: inline-block;
+    background: #ff7043;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #ff5722;
+}
+
+/* セクションの見出しがヘッダーで隠れないようにするための調整 */
+section::before {
+    content: '';
+    display: block;
+    height: 80px; /* ヘッダーの高さ分 */
+    margin-top: -80px; /* ヘッダーの高さ分のマイナスマージン */
+}
+
+.about-section,
+.novels-section {
+    background: #f5f5f5;
+    padding-bottom: 50px;
+}
+
+.about-section h2,
+.novels-section h2 {
+    margin-bottom: 40px;
+}
+
+.project {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.project-item {
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin: 10px;
+    padding: 20px;
+    width: calc(50% - 40px);
+    box-sizing: border-box;
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: #000;
+    position: relative; /* 詳細部分の重なりを制御するために追加 */
+    z-index: 1; /* 詳細部分の重なりを制御するために追加 */
+}
+
+.project-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    z-index: -1; /* 詳細部分より背景画像を下に配置するために追加 */
+}
+
+.project-item h3 {
+    margin-top: 20px;
+    font-size: 1.5em;
+}
+
+.project-item p {
+    margin-top: 10px;
+    font-size: 1em;
+}
+
+.project-item.project1::after {
+    background-image: url('game1.jpg');
+}
+
+.project-item.project2::after {
+    background-image: url('game2.jpg');
+}
+
+.project-item.project3::after {
+    background-image: url('novel1.jpg');
+}
+
+.project-item.project4::after {
+    background-image: url('novel2.jpg');
+}
+
+.contact-section {
+    background: #ccc;
+    padding-bottom: 100px; /* 送信ボタンが画面の下に隠れないようにするため */
+}
+
+contact-section form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.contact-section form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.contact-section form input,
+.contact-section form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.contact-section form button {
+    background: #ff7043;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.contact-section form button:hover {
+    background: #ff5722;
+}
+
+footer {
+    background: #212121;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/*hero-background*/
